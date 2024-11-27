@@ -1,1 +1,17 @@
 version: '3.7'
+
+services:
+  backend: 
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/usr/src/api
+    networks:
+      - app-network
+    command: bash -c "yarn start:dev"
+
+networks:
+  app-network:
+    name: app-network
+    driver: bridge
